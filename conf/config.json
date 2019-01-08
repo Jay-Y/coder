@@ -1,0 +1,23 @@
+{
+    "charset": "UTF-8",
+    "read_path": "/Users/Creator/Desktop/WorkSpace/PythonProjects/coder/template",
+    "out_path": "/Users/Creator/Desktop/WorkSpace/PythonProjects/coder/output",
+    "operate": {
+        "common": {
+            "@{author}": "ysj",
+            "@{entity}": "Role"
+        },
+        "rename": {
+            "#{datetime}_added_entity_@{entity}.template": "#{datetime}_added_entity_@{entity}.xml",
+            "@{persistent_mapper}.template": "@{entity}PersistentMapper.java",
+            "@{repository}.template": "@{entity}Repository.java"
+        },
+        "replace": {
+            "@{author}": "@{author}",
+            "@{entity}": "@{entity}",
+            "@{date}": "#{now}",
+            "@{package}": "com.becypress.service.admin.auth",
+            "@{table_name}": "roles"
+        }
+    }
+}

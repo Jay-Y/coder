@@ -1,0 +1,21 @@
+package @{package};
+
+import com.becypress.configurator.database.mybatis.repository.AbstractPagingRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ * Description: @{entity}Repository<br>
+ * Comments Name: @{entity}Repository<br>
+ * Date: @{date}<br>
+ * Author: @{author}<br>
+ * EditorDate: @{date}<br>
+ * Editor: @{author}
+ */
+@Repository
+public class @{entity}Repository extends AbstractPagingRepository<@{entity}, @{entity}PersistentMapper>
+{
+    public @{entity}Repository(@{entity}PersistentMapper persistentMapper)
+    {
+        super(persistentMapper);
+    }
+}

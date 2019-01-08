@@ -1,0 +1,17 @@
+package @{package};
+
+import com.becypress.configurator.database.mybatis.mapper.EntityPersistentMapper;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * Description: @{entity}PersistentMapper<br>
+ * Comments Name: @{entity}PersistentMapper<br>
+ * Date: @{date}<br>
+ * Author: @{author}<br>
+ * EditorDate: @{date}<br>
+ * Editor: @{author}
+ */
+@Mapper
+public interface @{entity}PersistentMapper extends EntityPersistentMapper<@{entity}>
+{
+}
