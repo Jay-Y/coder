@@ -1,0 +1,29 @@
+package @{package};
+
+import com.becypress.framework.common.core.AbstractDomainObject;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Table;
+
+/**
+ * Description: @{description}<br>
+ * Comments Name: @{entity}<br>
+ * Date: @{date}<br>
+ * Author: @{author}<br>
+ * EditorDate: @{date}<br>
+ * Editor: @{author}
+ */
+@Data
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "@{table_name}")
+public class @{entity} extends AbstractDomainObject
+{
+    @Column(name = "name")
+    private String name; // 名称
+}

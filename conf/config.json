@@ -5,19 +5,24 @@
     "operate": {
         "common": {
             "@{author}": "ysj",
-            "@{entity}": "Role"
+            "@{description}": "字典",
+            "@{entity}": "Dict",
+            "@{table_name}": "dicts"
         },
         "rename": {
+            "@{entity}.template": "@{entity}.java",
             "#{datetime}_added_entity_@{entity}.template": "#{datetime}_added_entity_@{entity}.xml",
             "@{persistent_mapper}.template": "@{entity}PersistentMapper.java",
+            "@{table_name}.template": "@{table_name}.csv",
             "@{repository}.template": "@{entity}Repository.java"
         },
         "replace": {
             "@{author}": "@{author}",
+            "@{description}": "@{description}",
             "@{entity}": "@{entity}",
             "@{date}": "#{now}",
-            "@{package}": "com.becypress.service.admin.auth",
-            "@{table_name}": "roles"
+            "@{package}": "com.becypress.service.admin.dict",
+            "@{table_name}": "@{table_name}"
         }
     }
 }

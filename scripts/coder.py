@@ -112,14 +112,10 @@ class Coder(Base):
         return s
 
     def read_config(self, path):  # 读取配置
-        if None == self.const_config:
-            # config_path = os.getcwd() + path
-            config_path = path
-            if os.path.exists(config_path):
-                with open(config_path) as fp:
-                    self.const_config = json.load(fp)
-                    return self.const_config
-            else:
-                self.logger.error("找不到配置文件")
+        # config_path = os.getcwd() + path
+        if os.path.exists(path):
+            with open(path) as fp:
+                self.const_config = json.load(fp)
+                return self.const_config
         else:
-            return self.const_config
+            self.logger.error("找不到配置文件")

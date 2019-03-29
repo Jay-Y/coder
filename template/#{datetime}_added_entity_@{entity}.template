@@ -17,8 +17,8 @@
 
     <property name="autoIncrement" value="true"/>
 
-    <changeSet id="#{datetime}" author="jay-y">
-        <createTable tableName="@{table_name}" remarks="@{table_name}">
+    <changeSet id="#{datetime}_01" author="jay-y">
+        <createTable tableName="@{table_name}" remarks="@{description}">
             <column name="id" type="varchar(32)" remarks="唯一标识">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -35,12 +35,12 @@
             <column name="last_modified_date" type="timestamp" remarks="最后更新时间"/>
         </createTable>
 
-        <!-- <loadData encoding="UTF-8"
-                  file="META-INF/database/liquibase/@{table_name}.csv"
-                  separator=";"
-                  tableName="@{table_name}">
-            <column name="deleted" type="boolean"/>
-            <column name="created_date" type="timestamp"/>
-        </loadData> -->
+        <!--<loadData encoding="UTF-8"-->
+                  <!--file="META-INF/database/liquibase/@{table_name}.csv"-->
+                  <!--separator=";"-->
+                  <!--tableName="@{table_name}">-->
+            <!--<column name="deleted" type="boolean"/>-->
+            <!--<column name="created_date" type="timestamp"/>-->
+        <!--</loadData>-->
     </changeSet>
 </databaseChangeLog>

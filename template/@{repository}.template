@@ -1,6 +1,6 @@
 package @{package};
 
-import com.becypress.configurator.database.mybatis.repository.AbstractPagingRepository;
+import com.becypress.configurator.database.mybatis.repository.AbstractRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  * Editor: @{author}
  */
 @Repository
-public class @{entity}Repository extends AbstractPagingRepository<@{entity}, @{entity}PersistentMapper>
+public class @{entity}Repository extends AbstractRepository<@{entity}, @{entity}PersistentMapper>
 {
     public @{entity}Repository(@{entity}PersistentMapper persistentMapper)
     {
