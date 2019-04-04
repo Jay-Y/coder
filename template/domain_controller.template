@@ -1,0 +1,88 @@
+package com.becypress.ext.service.afr.api.v1;
+
+import @{package}.@{entity}VO;
+import com.becypress.framework.common.api.BaseRestController;
+import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * Description: @{description}相关接口控制器<br>
+ * Comments Name: @{entity}Controller<br>
+ * Date: @{date}<br>
+ * Author: @{author}<br>
+ * EditorDate: @{date}<br>
+ * Editor: @{author}
+ */
+@Api(tags = "@{entity}s", description = "@{description}相关接口")
+@RestController
+@RequestMapping(value = "/api/v1/@{entity_lower}s")
+@Slf4j
+public class @{entity}Controller extends BaseRestController
+{
+    private final @{entity}ApplicationService @{entity_lower}ApplicationService;
+
+    public @{entity}Controller(@{entity}ApplicationService @{entity_lower}ApplicationService)
+    {
+        this.@{entity_lower}ApplicationService = @{entity_lower}ApplicationService;
+    }
+
+    @ApiOperation("创建@{description}")
+    @PostMapping
+    public ResponseEntity<@{entity}VO> create@{entity}(@RequestBody @{entity}VO vo)
+    {
+        return this.created(this.@{entity_lower}ApplicationService.create@{entity}(vo));
+    }
+
+    @ApiOperation("删除@{description}")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String id)
+    {
+        this.@{entity_lower}ApplicationService.delete@{entity}(new @{entity}VO(id));
+        return this.deleted();
+    }
+
+    @ApiOperation("获取@{description}列表")
+    @GetMapping
+    public ResponseEntity<List<@{entity}VO>> list@{entity}s()
+    {
+        return this.ok(this.@{entity_lower}ApplicationService.list@{entity}s(null));
+    }
+
+    @ApiOperation("获取@{description}分页列表（指定分页信息，可选过滤条件）")
+    @GetMapping(value = "/page")
+    public ResponseEntity<PageInfo> list@{entity}sOfPage(@RequestParam(required = false) String query, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "id desc") String sort)
+    {
+        return this.ok(this.@{entity_lower}ApplicationService.list@{entity}sOfPage(query, page, size, sort).toPageInfo());
+    }
+
+    @ApiOperation("更替@{description}")
+    @PutMapping
+    public ResponseEntity<Void> replace@{entity}(@RequestBody @{entity}VO vo)
+    {
+        this.@{entity_lower}ApplicationService.replace@{entity}(vo);
+        return this.created();
+    }
+
+    @ApiOperation("修改@{description}（指定@{description}ID）")
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> update@{entity}ById(@PathVariable String id, @RequestBody @{entity}VO vo)
+    {
+        vo.setId(id);
+        this.@{entity_lower}ApplicationService.update@{entity}(vo);
+        return this.created();
+    }
+
+    @ApiOperation("修改@{description}")
+    @PatchMapping
+    public ResponseEntity<Void> update@{entity}(@RequestBody @{entity}VO vo)
+    {
+        this.@{entity_lower}ApplicationService.update@{entity}(vo);
+        return this.created();
+    }
+}

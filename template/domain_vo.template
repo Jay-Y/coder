@@ -1,0 +1,41 @@
+package @{package};
+
+import com.becypress.configurator.error.CustomException;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.yframework.toolkit.StringUtil;
+
+/**
+ * Description: @{description}视图对象<br>
+ * Comments Name: @{entity}<br>
+ * Date: @{date}<br>
+ * Author: @{author}<br>
+ * EditorDate: @{date}<br>
+ * Editor: @{author}
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class @{entity}VO
+{
+    private String id; // @{description}ID
+
+    private String name; // @{description}名称
+
+    private String remark; // 备注
+
+    public @{entity}VO(String id)
+    {
+        this.id = id;
+    }
+
+    public void verifyId()
+    {
+        if (StringUtil.isBlank(this.getId()))
+        {
+            throw new CustomException("@{description}ID不能为空，请检查请求是否有误", HttpStatus.BAD_REQUEST);
+        }
+    }
+}

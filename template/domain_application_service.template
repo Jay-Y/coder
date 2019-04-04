@@ -1,0 +1,76 @@
+package com.becypress.ext.service.afr.api.v1;
+
+import @{package}.@{entity};
+import @{package}.@{entity}And@{entity}VOConvertMapper;
+import @{package}.@{entity}Repository;
+import @{package}.@{entity}VO;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import org.springframework.stereotype.Service;
+import org.yframework.toolkit.StringUtil;
+import org.yframework.toolkit.y;
+
+import java.util.List;
+
+/**
+ * Description: @{description}应用服务<br>
+ * Comments Name: @{entity}ApplicationService<br>
+ * Date: @{date}<br>
+ * Author: @{author}<br>
+ * EditorDate: @{date}<br>
+ * Editor: @{author}
+ */
+@Service
+public class @{entity}ApplicationService
+{
+    private final @{entity}Repository @{entity_lower}Repository;
+
+    private final @{entity}And@{entity}VOConvertMapper @{entity_lower}And@{entity}VOConvertMapper;
+
+    public @{entity}ApplicationService(@{entity}Repository @{entity_lower}Repository, @{entity}And@{entity}VOConvertMapper @{entity_lower}And@{entity}VOConvertMapper)
+    {
+        this.@{entity_lower}Repository = @{entity_lower}Repository;
+        this.@{entity_lower}And@{entity}VOConvertMapper = @{entity_lower}And@{entity}VOConvertMapper;
+    }
+
+    public @{entity}VO create@{entity}(@{entity}VO vo)
+    {
+        @{entity} @{entity_lower} = this.@{entity_lower}And@{entity}VOConvertMapper.o2ToO1(vo);
+        this.@{entity_lower}Repository.add(@{entity_lower});
+        return this.@{entity_lower}And@{entity}VOConvertMapper.o1ToO2(@{entity_lower});
+    }
+
+    public void delete@{entity}(@{entity}VO vo)
+    {
+        vo.verifyId();
+        this.@{entity_lower}Repository.remove(new @{entity}(vo.getId()));
+    }
+
+    public List<@{entity}VO> list@{entity}s(String query)
+    {
+        List<@{entity}> @{entity_lower}s = this.@{entity_lower}Repository.list(StringUtil.isNotBlank(query) ? y.util().json().jsonToObject(query, @{entity}.class) : null);
+        return this.@{entity_lower}And@{entity}VOConvertMapper.o1sToO2s(@{entity_lower}s);
+    }
+
+    public Page<@{entity}VO> list@{entity}sOfPage(String query, int page, int size, String sort)
+    {
+        return PageHelper.
+                startPage(page, size).
+                setOrderBy(sort).
+                doSelectPage(() -> this.list@{entity}s(query));
+    }
+
+    public void replace@{entity}(@{entity}VO vo)
+    {
+        vo.verifyId();
+        @{entity} @{entity_lower} = this.@{entity_lower}And@{entity}VOConvertMapper.o2ToO1(vo);
+        this.@{entity_lower}Repository.replace(@{entity_lower});
+    }
+
+    public void update@{entity}(@{entity}VO vo)
+    {
+        vo.verifyId();
+        @{entity} @{entity_lower} = this.@{entity_lower}And@{entity}VOConvertMapper.o2ToO1(vo);
+        this.@{entity_lower}Repository.update(@{entity_lower});
+    }
+}

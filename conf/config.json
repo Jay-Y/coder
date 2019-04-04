@@ -5,23 +5,30 @@
     "operate": {
         "common": {
             "@{author}": "ysj",
-            "@{description}": "字典",
-            "@{entity}": "Dict",
-            "@{table_name}": "dicts"
+            "@{description}": "钉钉商户",
+            "@{entity}": "DingTalkMerchant",
+            "@{entity_lower}": "dingTalkMerchant",
+            "@{package}": "com.becypress.service.dingtalk.merchant",
+            "@{table_name}": "dingtalk_merchants"
         },
         "rename": {
-            "@{entity}.template": "@{entity}.java",
-            "#{datetime}_added_entity_@{entity}.template": "#{datetime}_added_entity_@{entity}.xml",
-            "@{persistent_mapper}.template": "@{entity}PersistentMapper.java",
-            "@{table_name}.template": "@{table_name}.csv",
-            "@{repository}.template": "@{entity}Repository.java"
+            "domain_application_service.template": "@{entity}ApplicationService.java",
+            "domain_controller.template": "@{entity}Controller.java",
+            "domain_convert_mapper.template": "@{entity}And@{entity}VOConvertMapper.java",
+            "domain_persistent_mapper.template": "@{entity}PersistentMapper.java",
+            "domain_repository.template": "@{entity}Repository.java",
+            "domain_vo.template": "@{entity}VO.java",
+            "domain.template": "@{entity}.java",
+            "table_csv.template": "@{table_name}.csv",
+            "table_init.template": "#{datetime}_added_entity_@{entity}.xml"
         },
         "replace": {
             "@{author}": "@{author}",
             "@{description}": "@{description}",
             "@{entity}": "@{entity}",
+            "@{entity_lower}": "@{entity_lower}",
             "@{date}": "#{now}",
-            "@{package}": "com.becypress.service.admin.dict",
+            "@{package}": "@{package}",
             "@{table_name}": "@{table_name}"
         }
     }

@@ -1,0 +1,17 @@
+package @{package};
+
+import com.becypress.framework.common.core.ObjectConvertMapper;
+import org.mapstruct.Mapper;
+
+/**
+ * Description: @{entity}And@{entity}VOConvertMapper<br>
+ * Comments Name: @{entity}And@{entity}VOConvertMapper<br>
+ * Date: @{date}<br>
+ * Author: @{author}<br>
+ * EditorDate: @{date}<br>
+ * Editor: @{author}
+ */
+@Mapper(componentModel = "spring")
+public interface @{entity}And@{entity}VOConvertMapper extends ObjectConvertMapper<@{entity}, @{entity}VO>
+{
+}

@@ -26,4 +26,12 @@ public class @{entity} extends AbstractDomainObject
 {
     @Column(name = "name")
     private String name; // 名称
+
+    @Column(name = "remark")
+    private String remark; // 备注
+
+    public @{entity}(String id)
+    {
+        this.id = id;
+    }
 }
