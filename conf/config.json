@@ -5,11 +5,11 @@
     "operate": {
         "common": {
             "@{author}": "ysj",
-            "@{description}": "钉钉商户",
-            "@{entity}": "DingTalkMerchant",
-            "@{entity_lower}": "dingTalkMerchant",
-            "@{package}": "com.becypress.service.dingtalk.merchant",
-            "@{table_name}": "dingtalk_merchants"
+            "@{description}": "生成器",
+            "@{entity}": "Generator",
+            "@{entity_lower}": "generator",
+            "@{package}": "com.becypress.service.admin.generator",
+            "@{table_name}": "generators"
         },
         "rename": {
             "domain_application_service.template": "@{entity}ApplicationService.java",

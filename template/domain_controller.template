@@ -58,7 +58,7 @@ public class @{entity}Controller extends BaseRestController
     @GetMapping(value = "/page")
     public ResponseEntity<PageInfo> list@{entity}sOfPage(@RequestParam(required = false) String query, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "id desc") String sort)
     {
-        return this.ok(this.@{entity_lower}ApplicationService.list@{entity}sOfPage(query, page, size, sort).toPageInfo());
+        return this.ok(this.@{entity_lower}ApplicationService.list@{entity}sOfPage(y.util().json().jsonToObject(query, QueryParameterList.class), page, size, sort).toPageInfo());
     }
 
     @ApiOperation("更替@{description}")

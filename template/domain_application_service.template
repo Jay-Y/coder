@@ -1,5 +1,7 @@
 package com.becypress.ext.service.afr.api.v1;
 
+import com.becypress.configurator.database.mybatis.annotation.ConditionalFilterControl;
+import com.becypress.configurator.database.mybatis.model.QueryParameterList;
 import @{package}.@{entity};
 import @{package}.@{entity}And@{entity}VOConvertMapper;
 import @{package}.@{entity}Repository;
@@ -46,13 +48,15 @@ public class @{entity}ApplicationService
         this.@{entity_lower}Repository.remove(new @{entity}(vo.getId()));
     }
 
-    public List<@{entity}VO> list@{entity}s(String query)
+    @ConditionalFilterControl(pointcut = ".*@{entity}PersistentMapper.select.*")
+    public List<@{entity}VO> list@{entity}s(QueryParameterList parameters)
     {
-        List<@{entity}> @{entity_lower}s = this.@{entity_lower}Repository.list(StringUtil.isNotBlank(query) ? y.util().json().jsonToObject(query, @{entity}.class) : null);
+        List<@{entity}> @{entity_lower}s = this.@{entity_lower}Repository.list(new @{entity}());
         return this.@{entity_lower}And@{entity}VOConvertMapper.o1sToO2s(@{entity_lower}s);
     }
 
-    public Page<@{entity}VO> list@{entity}sOfPage(String query, int page, int size, String sort)
+    @ConditionalFilterControl(pointcut = ".*@{entity}PersistentMapper.select.*")
+    public Page<@{entity}VO> list@{entity}sOfPage(QueryParameterList parameters, int page, int size, String sort)
     {
         return PageHelper.
                 startPage(page, size).

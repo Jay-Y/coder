@@ -25,10 +25,10 @@ import javax.persistence.Table;
 public class @{entity} extends AbstractDomainObject
 {
     @Column(name = "name")
-    private String name; // 名称
+    private String name; // @{description}名称
 
     @Column(name = "remark")
-    private String remark; // 备注
+    private String remark; // @{description}备注
 
     public @{entity}(String id)
     {
