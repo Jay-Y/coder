@@ -61,7 +61,7 @@ public class @{entity}ApplicationService
         return PageHelper.
                 startPage(page, size).
                 setOrderBy(sort).
-                doSelectPage(() -> this.list@{entity}s(query));
+                doSelectPage(() -> this.list@{entity}s(parameters));
     }
 
     public void replace@{entity}(@{entity}VO vo)

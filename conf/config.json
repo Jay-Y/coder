@@ -5,11 +5,11 @@
     "operate": {
         "common": {
             "@{author}": "ysj",
-            "@{description}": "生成器",
-            "@{entity}": "Generator",
-            "@{entity_lower}": "generator",
-            "@{package}": "com.becypress.service.admin.generator",
-            "@{table_name}": "generators"
+            "@{description}": "渠道",
+            "@{entity}": "Channel",
+            "@{entity_lower}": "channel",
+            "@{package}": "cn.boc.service.pay.trade.center.channel",
+            "@{table_name}": "channels"
         },
         "rename": {
             "domain_application_service.template": "@{entity}ApplicationService.java",

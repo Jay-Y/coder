@@ -41,7 +41,7 @@ public class @{entity}Controller extends BaseRestController
 
     @ApiOperation("删除@{description}")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String id)
+    public ResponseEntity<Void> delete@{entity}(@PathVariable String id)
     {
         this.@{entity_lower}ApplicationService.delete@{entity}(new @{entity}VO(id));
         return this.deleted();
