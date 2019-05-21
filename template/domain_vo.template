@@ -24,7 +24,7 @@ public class @{entity}VO
 
     private String name; // @{description}名称
 
-    private String remarks; // 渠道备注
+    private String remarks; // @{description}备注
 
     public @{entity}VO(String id)
     {

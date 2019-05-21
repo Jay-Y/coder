@@ -28,7 +28,7 @@ public class @{entity} extends AbstractDomainObject
     private String name; // @{description}名称
 
     @Column(name = "remarks")
-    private String remarks; // 渠道备注
+    private String remarks; // @{description}备注
 
     public @{entity}(String id)
     {
