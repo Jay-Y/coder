@@ -5,11 +5,11 @@
     "operate": {
         "common": {
             "@{author}": "ysj",
-            "@{description}": "渠道",
-            "@{entity}": "Channel",
-            "@{entity_lower}": "channel",
-            "@{package}": "cn.boc.service.pay.trade.center.channel",
-            "@{table_name}": "channels"
+            "@{description}": "商户和渠道的关系",
+            "@{entity}": "MerchantAndChannelRelationship",
+            "@{entity_lower}": "merchantAndChannelRelationship",
+            "@{package}": "cn.boc.service.pay.trade.center.merchant",
+            "@{table_name}": "merchant_and_channel_rels"
         },
         "rename": {
             "domain_application_service.template": "@{entity}ApplicationService.java",

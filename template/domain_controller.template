@@ -1,13 +1,18 @@
 package com.becypress.ext.service.afr.api.v1;
 
 import @{package}.@{entity}VO;
+import com.becypress.configurator.database.mybatis.model.QueryParameterList;
+import com.becypress.configurator.error.ErrorObject;
 import com.becypress.framework.common.api.BaseRestController;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.yframework.toolkit.y;
 
 import java.util.List;
 
@@ -33,6 +38,14 @@ public class @{entity}Controller extends BaseRestController
     }
 
     @ApiOperation("创建@{description}")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
+            @ApiResponse(code = 201, message = "创建完成", response = @{entity}VO.class),
+            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
+            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
+            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
+            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
+    })
     @PostMapping
     public ResponseEntity<@{entity}VO> create@{entity}(@RequestBody @{entity}VO vo)
     {
@@ -40,6 +53,14 @@ public class @{entity}Controller extends BaseRestController
     }
 
     @ApiOperation("删除@{description}")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
+            @ApiResponse(code = 204, message = "删除完成"),
+            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
+            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
+            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
+            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete@{entity}(@PathVariable String id)
     {
@@ -48,6 +69,13 @@ public class @{entity}Controller extends BaseRestController
     }
 
     @ApiOperation("获取@{description}列表")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "查询成功", response = List.class),
+            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
+            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
+            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
+            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
+    })
     @GetMapping
     public ResponseEntity<List<@{entity}VO>> list@{entity}s()
     {
@@ -55,6 +83,13 @@ public class @{entity}Controller extends BaseRestController
     }
 
     @ApiOperation("获取@{description}分页列表（指定分页信息，可选过滤条件）")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "查询成功", response = PageInfo.class),
+            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
+            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
+            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
+            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
+    })
     @GetMapping(value = "/page")
     public ResponseEntity<PageInfo> list@{entity}sOfPage(@RequestParam(required = false) String query, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "id desc") String sort)
     {
@@ -62,6 +97,14 @@ public class @{entity}Controller extends BaseRestController
     }
 
     @ApiOperation("更替@{description}")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
+            @ApiResponse(code = 201, message = "更替完成"),
+            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
+            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
+            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
+            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
+    })
     @PutMapping
     public ResponseEntity<Void> replace@{entity}(@RequestBody @{entity}VO vo)
     {
@@ -70,6 +113,14 @@ public class @{entity}Controller extends BaseRestController
     }
 
     @ApiOperation("修改@{description}（指定@{description}ID）")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
+            @ApiResponse(code = 201, message = "修改完成"),
+            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
+            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
+            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
+            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
+    })
     @PatchMapping("/{id}")
     public ResponseEntity<Void> update@{entity}ById(@PathVariable String id, @RequestBody @{entity}VO vo)
     {
@@ -79,6 +130,14 @@ public class @{entity}Controller extends BaseRestController
     }
 
     @ApiOperation("修改@{description}")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
+            @ApiResponse(code = 201, message = "修改完成"),
+            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
+            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
+            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
+            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
+    })
     @PatchMapping
     public ResponseEntity<Void> update@{entity}(@RequestBody @{entity}VO vo)
     {
