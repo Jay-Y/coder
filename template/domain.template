@@ -1,10 +1,12 @@
 package @{package};
 
+import com.becypress.configurator.error.CustomException;
 import com.becypress.framework.common.core.AbstractDomainObject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.yframework.toolkit.StringUtil;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
@@ -33,5 +35,26 @@ public class @{entity} extends AbstractDomainObject
     public @{entity}(String id)
     {
         this.id = id;
+    }
+
+    public boolean exist(final @{entity}Repository @{entity_lower}Repository)
+    {
+        @{entity} tmp = @{entity_lower}Repository.get(this);
+        if (tmp != null)
+        {
+            this.setId(tmp.getId());
+            this.setName(tmp.getName());
+            this.setRemarks(tmp.getRemarks());
+            return true;
+        }
+        return false;
+    }
+
+    public void verifyId()
+    {
+        if (StringUtil.isBlank(this.getId()))
+        {
+            throw new CustomException("@{description}ID不能为空，请检查请求是否有误");
+        }
     }
 }
