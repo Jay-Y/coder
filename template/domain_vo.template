@@ -32,6 +32,11 @@ public class @{entity}VO
     @ApiModelProperty(value = "@{description}备注")
     private String remarks; // @{description}备注
 
+    public @{entity}VO(String id)
+    {
+        this.id = id;
+    }
+
     public void verifyId()
     {
         if (StringUtil.isBlank(this.getId()))
