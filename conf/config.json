@@ -5,11 +5,11 @@
     "operate": {
         "common": {
             "@{author}": "ysj",
-            "@{description}": "用户认证和订单的关系",
-            "@{entity}": "UserAuthenticationAndOrderRelationship",
-            "@{entity_lower}": "userAuthenticationAndOrderRelationship",
-            "@{package}": "cn.boc.service.pay.trade.center.user",
-            "@{table_name}": "ua_and_order_rels"
+            "@{description}": "渠道",
+            "@{entity}": "Channel",
+            "@{entity_lower}": "channel",
+            "@{package}": "com.becypress.service.admin.channel",
+            "@{table_name}": "channels"
         },
         "rename": {
             "domain_application_service.template": "@{entity}ApplicationService.java",

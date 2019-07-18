@@ -39,12 +39,12 @@ public class @{entity} extends AbstractDomainObject
 
     public boolean exist(final @{entity}Repository @{entity_lower}Repository)
     {
-        @{entity} tmp = @{entity_lower}Repository.get(this);
-        if (tmp != null)
+        @{entity} temp = @{entity_lower}Repository.get(this);
+        if (temp != null)
         {
-            this.setId(tmp.getId());
-            this.setName(tmp.getName());
-            this.setRemarks(tmp.getRemarks());
+            this.setId(temp.getId());
+            this.setName(temp.getName());
+            this.setRemarks(temp.getRemarks());
             return true;
         }
         return false;

@@ -31,4 +31,12 @@ public class @{entity}VO
 
     @ApiModelProperty(value = "@{description}备注")
     private String remarks; // @{description}备注
+
+    public void verifyId()
+    {
+        if (StringUtil.isBlank(this.getId()))
+        {
+            throw new CustomException("@{description}ID不能为空，请检查请求是否有误");
+        }
+    }
 }
