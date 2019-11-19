@@ -2,6 +2,7 @@ package @{package};
 
 import com.becypress.configurator.error.CustomException;
 import com.becypress.framework.common.core.AbstractDomainObject;
+import com.becypress.toolkit.ObjectUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -40,14 +41,7 @@ public class @{entity} extends AbstractDomainObject
     public boolean exist(final @{entity}Repository @{entity_lower}Repository)
     {
         @{entity} temp = @{entity_lower}Repository.get(this);
-        if (temp != null)
-        {
-            this.setId(temp.getId());
-            this.setName(temp.getName());
-            this.setRemarks(temp.getRemarks());
-            return true;
-        }
-        return false;
+        return ObjectUtil.INSTANCE.exist(this, temp);
     }
 
     public void verifyId()

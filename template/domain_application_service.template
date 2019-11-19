@@ -1,16 +1,9 @@
-package com.becypress.ext.service.afr.api.v1;
+package com.becypress.service.example.api.v1;
 
-import com.becypress.configurator.database.mybatis.annotation.ConditionalFilterControl;
-import com.becypress.configurator.database.mybatis.model.QueryParameterList;
+import com.becypress.framework.common.api.BasicDomainApplicationService;
 import @{package}.@{entity};
-import @{package}.@{entity}And@{entity}VOConvertMapper;
 import @{package}.@{entity}Repository;
-import @{package}.@{entity}VO;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
-import org.yframework.toolkit.StringUtil;
-import org.yframework.toolkit.y;
 
 import java.util.List;
 
@@ -23,58 +16,10 @@ import java.util.List;
  * Editor: @{author}
  */
 @Service
-public class @{entity}ApplicationService
+public class @{entity}ApplicationService extends BasicDomainApplicationService<@{entity}, @{entity}Repository>
 {
-    private final @{entity}Repository @{entity_lower}Repository;
-
-    private final @{entity}And@{entity}VOConvertMapper @{entity_lower}And@{entity}VOConvertMapper;
-
-    public @{entity}ApplicationService(@{entity}Repository @{entity_lower}Repository, @{entity}And@{entity}VOConvertMapper @{entity_lower}And@{entity}VOConvertMapper)
+    public @{entity}ApplicationService(@{entity}Repository @{entity_lower}Repository)
     {
-        this.@{entity_lower}Repository = @{entity_lower}Repository;
-        this.@{entity_lower}And@{entity}VOConvertMapper = @{entity_lower}And@{entity}VOConvertMapper;
-    }
-
-    public @{entity}VO create@{entity}(@{entity}VO vo)
-    {
-        @{entity} @{entity_lower} = this.@{entity_lower}And@{entity}VOConvertMapper.o2ToO1(vo);
-        this.@{entity_lower}Repository.add(@{entity_lower});
-        return this.@{entity_lower}And@{entity}VOConvertMapper.o1ToO2(@{entity_lower});
-    }
-
-    public void delete@{entity}(@{entity}VO vo)
-    {
-        vo.verifyId();
-        this.@{entity_lower}Repository.remove(new @{entity}(vo.getId()));
-    }
-
-    @ConditionalFilterControl(pointcut = ".*@{entity}PersistentMapper.select.*")
-    public List<@{entity}VO> list@{entity}s(QueryParameterList parameters)
-    {
-        List<@{entity}> @{entity_lower}s = this.@{entity_lower}Repository.list(new @{entity}());
-        return this.@{entity_lower}And@{entity}VOConvertMapper.o1sToO2s(@{entity_lower}s);
-    }
-
-    @ConditionalFilterControl(pointcut = ".*@{entity}PersistentMapper.select.*")
-    public Page<@{entity}VO> list@{entity}sOfPage(QueryParameterList parameters, int page, int size, String sort)
-    {
-        return PageHelper.
-                startPage(page, size).
-                setOrderBy(sort).
-                doSelectPage(() -> this.list@{entity}s(parameters));
-    }
-
-    public void replace@{entity}(@{entity}VO vo)
-    {
-        vo.verifyId();
-        @{entity} @{entity_lower} = this.@{entity_lower}And@{entity}VOConvertMapper.o2ToO1(vo);
-        this.@{entity_lower}Repository.replace(@{entity_lower});
-    }
-
-    public void update@{entity}(@{entity}VO vo)
-    {
-        vo.verifyId();
-        @{entity} @{entity_lower} = this.@{entity_lower}And@{entity}VOConvertMapper.o2ToO1(vo);
-        this.@{entity_lower}Repository.update(@{entity_lower});
+        super(@{entity_lower}Repository);
     }
 }

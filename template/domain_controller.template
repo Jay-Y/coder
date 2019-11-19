@@ -1,20 +1,13 @@
-package com.becypress.ext.service.afr.api.v1;
+package com.becypress.service.example.api.v1;
 
+import com.becypress.framework.common.api.BasicDomainRestController;
+import @{package}.@{entity};
+import @{package}.@{entity}And@{entity}VOConvertMapper;
 import @{package}.@{entity}VO;
-import com.becypress.configurator.database.mybatis.model.QueryParameterList;
-import com.becypress.configurator.error.ErrorObject;
-import com.becypress.framework.common.api.BaseRestController;
-import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.yframework.toolkit.y;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Description: @{description}相关接口控制器<br>
@@ -24,124 +17,14 @@ import java.util.List;
  * EditorDate: @{date}<br>
  * Editor: @{author}
  */
-@Api(tags = "@{entity}s", description = "@{description}相关接口")
+@Api(tags = "@{entity}", description = "@{description}相关接口")
 @RestController
 @RequestMapping(value = "/api/v1/@{entity_lower}s")
 @Slf4j
-public class @{entity}Controller extends BaseRestController
+public class @{entity}Controller extends BasicDomainRestController<@{entity}, @{entity}VO, @{entity}ApplicationService, @{entity}And@{entity}VOConvertMapper>
 {
-    private final @{entity}ApplicationService @{entity_lower}ApplicationService;
-
-    public @{entity}Controller(@{entity}ApplicationService @{entity_lower}ApplicationService)
+    public @{entity}Controller(@{entity}ApplicationService @{entity_lower}ApplicationService, @{entity}And@{entity}VOConvertMapper @{entity_lower}And@{entity}VOConvertMapper)
     {
-        this.@{entity_lower}ApplicationService = @{entity_lower}ApplicationService;
-    }
-
-    @ApiOperation("创建@{description}")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
-            @ApiResponse(code = 201, message = "创建完成", response = @{entity}VO.class),
-            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
-            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
-            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
-            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
-    })
-    @PostMapping
-    public ResponseEntity<@{entity}VO> create@{entity}(@RequestBody @{entity}VO vo)
-    {
-        return this.created(this.@{entity_lower}ApplicationService.create@{entity}(vo));
-    }
-
-    @ApiOperation("删除@{description}")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
-            @ApiResponse(code = 204, message = "删除完成"),
-            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
-            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
-            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
-            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
-    })
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete@{entity}(@PathVariable String id)
-    {
-        this.@{entity_lower}ApplicationService.delete@{entity}(new @{entity}VO(id));
-        return this.deleted();
-    }
-
-    @ApiOperation("获取@{description}列表")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "查询成功", response = List.class),
-            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
-            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
-            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
-            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
-    })
-    @GetMapping
-    public ResponseEntity<List<@{entity}VO>> list@{entity}s()
-    {
-        return this.ok(this.@{entity_lower}ApplicationService.list@{entity}s(null));
-    }
-
-    @ApiOperation("获取@{description}分页列表（指定分页信息，可选过滤条件）")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "查询成功", response = PageInfo.class),
-            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
-            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
-            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
-            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
-    })
-    @GetMapping(value = "/page")
-    public ResponseEntity<PageInfo> list@{entity}sOfPage(@RequestParam(required = false) String query, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "id desc") String sort)
-    {
-        return this.ok(this.@{entity_lower}ApplicationService.list@{entity}sOfPage(y.util().json().jsonToObject(query, QueryParameterList.class), page, size, sort).toPageInfo());
-    }
-
-    @ApiOperation("更替@{description}")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
-            @ApiResponse(code = 201, message = "更替完成"),
-            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
-            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
-            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
-            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
-    })
-    @PutMapping
-    public ResponseEntity<Void> replace@{entity}(@RequestBody @{entity}VO vo)
-    {
-        this.@{entity_lower}ApplicationService.replace@{entity}(vo);
-        return this.created();
-    }
-
-    @ApiOperation("修改@{description}（指定@{description}ID）")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
-            @ApiResponse(code = 201, message = "修改完成"),
-            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
-            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
-            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
-            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
-    })
-    @PatchMapping("/{id}")
-    public ResponseEntity<Void> update@{entity}ById(@PathVariable String id, @RequestBody @{entity}VO vo)
-    {
-        vo.setId(id);
-        this.@{entity_lower}ApplicationService.update@{entity}(vo);
-        return this.created();
-    }
-
-    @ApiOperation("修改@{description}")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "请求成功（当前接口无此状态返回）"),
-            @ApiResponse(code = 201, message = "修改完成"),
-            @ApiResponse(code = 401, message = "无访问权限", response = ErrorObject.class),
-            @ApiResponse(code = 403, message = "被禁止访问", response = ErrorObject.class),
-            @ApiResponse(code = 404, message = "不支持访问", response = ErrorObject.class),
-            @ApiResponse(code = 500, message = "服务器异常", response = ErrorObject.class)
-    })
-    @PatchMapping
-    public ResponseEntity<Void> update@{entity}(@RequestBody @{entity}VO vo)
-    {
-        this.@{entity_lower}ApplicationService.update@{entity}(vo);
-        return this.created();
+        super(@{entity_lower}ApplicationService, @{entity_lower}And@{entity}VOConvertMapper);
     }
 }
