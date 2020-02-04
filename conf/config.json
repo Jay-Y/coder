@@ -5,11 +5,11 @@
     "operate": {
         "common": {
             "@{author}": "ysj",
-            "@{description}": "用户联系方式",
-            "@{entity}": "UserContact",
-            "@{entity_lower}": "userContact",
-            "@{package}": "com.becypress.service.uaa.user",
-            "@{table_name}": "user_contacts"
+            "@{description}": "成员",
+            "@{entity}": "Member",
+            "@{entity_lower}": "member",
+            "@{package}": "com.becypress.service.upiw.member",
+            "@{table_name}": "members"
         },
         "rename": {
             "domain_application_service.template": "@{entity}ApplicationService.java",

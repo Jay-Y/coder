@@ -1,12 +1,12 @@
 package @{package};
 
 import com.becypress.configurator.error.CustomException;
+import com.becypress.framework.common.core.IViewObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.yframework.toolkit.StringUtil;
 
 /**
@@ -21,7 +21,7 @@ import org.yframework.toolkit.StringUtil;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class @{entity}VO
+public class @{entity}VO implements IViewObject<String>
 {
     @ApiModelProperty(value = "@{description}ID")
     private String id; // @{description}ID

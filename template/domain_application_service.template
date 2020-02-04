@@ -5,8 +5,6 @@ import @{package}.@{entity};
 import @{package}.@{entity}Repository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * Description: @{description}应用服务<br>
  * Comments Name: @{entity}ApplicationService<br>
